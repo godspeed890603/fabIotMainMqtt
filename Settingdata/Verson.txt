@@ -1,0 +1,40 @@
+ver1.01
+	pms Upload,noise Upload--ok
+
+ver1.02
+	Dht.....--ok
+
+ver1.03
+	Vin.....--OK
+
+Ver1.04 
+	add Post Server setting
+
+Ver1.05
+	add mountDevice
+
+Ver1.08
+	Add dht22 Calibration
+
+
+Ver1.09
+	Add Sht2x
+
+Ver1.10
+	Add particle total um(um_total)	
+
+Ver1.11
+	Add OTA	
+
+
+Ver1.12
+	Add Sht31
+	Remove Dht22
+
+Ver1.13
+	Add Sht31 offset value
+	Add Dhcp flag(notice: the "Y" flag can't be set in last position .. it will be error)
+
+Ver1.14
+	1.fixed error data when 0.3um is 0 but other size is not zero
+	2.change the Web Upload retry Times to  3  if the 0.3um is 0

@@ -1,0 +1,13 @@
+version=1.01
+machine_ID=CIMDEV
+sensor_HT=Dht,1,N,15000
+sensor_NOISE=Noise,2,Y,800
+sensor_VIRATION=CIMVVIRATION,3,N,500
+sensor_VOLTAGE=CIMVOLTAGE,4,N,1000
+sensor_PARTICLE=Pms,5,N,6000
+Wifi=SMC,hsdfab3cim,Y,1000
+ipaddress=172.27.15.116
+gateway=172.27.31.254
+subnet=255.255.224.0
+dns=192.168.1.249
+webserverHtml_Header=http://172.27.10.220/Get_Data/IOT_MON/IOT_SAVE.PHP?

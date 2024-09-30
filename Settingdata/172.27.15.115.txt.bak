@@ -1,0 +1,13 @@
+version=1.01
+machine_ID=CIM0001
+sensor_HT=CIMHT,1,N,15000
+sensor_NOISE=Noise,2,N,800
+sensor_VIRATION=GYRO,3,N,500
+sensor_VOLTAGE=Volt,4,N,1000
+sensor_PARTICLE=Pms,5,Y,6000
+Wifi=SMC,hsdfab3cim,Y,1000
+ipaddress=172.27.15.115
+gateway=172.27.31.254
+subnet=255.255.224.0
+dns=192.168.1.249
+webserverHtml_Header=http://172.27.10.220/Get_Data/IOT_MON/IOT_SAVE.PHP?
