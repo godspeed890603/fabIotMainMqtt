@@ -13,5 +13,6 @@
   #include "iotWebAction.h"
   #include "iotOledSH1106.h"
   #include "iotShtxx.h"
+  #include "./src/mqtt/MQTTClient.h"
 
 #endif /* __FABIOTMAIN_H__ */

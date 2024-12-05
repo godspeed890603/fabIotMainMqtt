@@ -6,6 +6,7 @@
 #include "iotWebAction.h"
 #include "iotwifi.h"
 #include "const.h"
+#include "./src/mqtt/MQTTClient.h"
 //SoftwareSerial SerialPMS5003(D6, D5);
 //SoftwareSerial SerialPMS7003(D4, D3);
 #define D6 12
@@ -80,6 +81,7 @@ class iotPms7003 {
         void getMaxRange();
         void clearMaxRange();
         int uploadPms(iotWebAction DataAction);
+        bool uploadMqttPms(iotWebAction DataAction,MQTTClient* mqttClientHandler);
         //int iotDataAction(int uploadType,iotPms7003 fabPms7003,ReadSetting iotReadSetting,iotWifi fabIotWifi);
         iotWebAction setUploadData(int uploadType,ReadSetting iotReadSetting,iotWifi fabIotWifi);
           

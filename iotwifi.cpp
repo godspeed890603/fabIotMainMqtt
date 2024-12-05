@@ -70,7 +70,7 @@ void iotWifi::initialWifi(){
   //ipDisplay();
   //if ((WiFiMulti.run() == WL_CONNECTED)) {
   while (WiFi.status() != WL_CONNECTED) {
-    Serial.printf("connecting....");
+    Serial.println("connecting....");
      //ipDisplay();
      //delay(1*Sec1);
      delay(reconnectInterval);

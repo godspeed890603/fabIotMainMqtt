@@ -39,6 +39,18 @@ iotWebAction iotPms7003::setUploadData(int uploadType,
   return DataAction;
 }
 
+bool iotPms7003::uploadMqttPms(iotWebAction DataAction,
+                               MQTTClient* mqttClientHandler) {
+  String mqttData = DataAction.getPmsJson(DataAction.uploadType);
+  Serial.println(mqttData);
+  if (mqttClientHandler->publishData(mqttData)) {
+    Serial.println("MQTT data sent successfully.");
+  } else {
+    Serial.println("MQTT data sent failture....");
+  }
+}
+
+
 int iotPms7003::uploadPms(iotWebAction DataAction) {
   int httpCode = -1;
   int httpPostLoop = 0;
@@ -118,11 +130,10 @@ void iotPms7003::getMaxRange() {
   // Serial.println("-- max_range_5_0um -->" + String(max_range_5_0um));
   // Serial.println("-- max_range_10_0um -->" + String(max_range_10_0um));
 
-
-  //紀錄作多的那一次....
-  //出現最大顆的那一次
-  //只要有找大最大顆的!!
-  //那一次就是要上傳的資料
+  // 紀錄作多的那一次....
+  // 出現最大顆的那一次
+  // 只要有找大最大顆的!!
+  // 那一次就是要上傳的資料
   if (singlePmsRangeData.range_10_0um > max_range_10_0um) {
     Serial.println("-- getMaxRange max_range_10_0um -->" +
                    String(max_range_10_0um));
@@ -179,8 +190,6 @@ void iotPms7003::getMaxRange() {
     setMaxRange();
     return;
   }
-
-  
 }
 
 void iotPms7003::setMaxRange() {

@@ -43,6 +43,9 @@ iotPms7003 fabPms7003;
 iotVoltSensor fabVoltSensor;
 iotVHT fabVHTSensor;
 iotShtXX fabShtXXSensor;
+//Mqtt 2024/10/14
+MQTTClient* mqttClientHandler;
+String service = "service_pms";
 
 // iot Data Action
 iotWebAction webAction;
@@ -298,7 +301,14 @@ void doPms() {
     if (pmsLoopchange > iotReadSetting.stu_sensor_PMS.uploadLoop) {
       DataAction = fabPms7003.setUploadData(
           iotReadSetting.stu_sensor_PMS.DataType, iotReadSetting, fabIotWifi);
+      
       pms_httpCode = fabPms7003.uploadPms(DataAction);
+
+      Serial.println("------uploadMqttPms Read start------ " );
+      bool uploadRtn = fabPms7003.uploadMqttPms(DataAction,mqttClientHandler);//2024/10/14 Add Mqtt
+      Serial.println("------uploadMqttPms Read end------ " );
+      
+      // mqttClientHandler
       fabPms7003.clearMaxRange();  // v1.10
       pmsLoopchange = 0;
       // if httpcoe !=200 wifi reset;
@@ -422,6 +432,15 @@ void setup() {
     fabIotOledSH1106.DisplaySystemStartText(0, yPos, "No Wifi..");
     yPos = yPos + 10;
   }
+
+ // Wifi setting & start 2024/10/14
+  mqttClientHandler= new MQTTClient(); 
+  delay(100);
+  mqttClientHandler->setServiceName(service);
+  mqttClientHandler->CreatePubSubTopic();
+  mqttClientHandler->connect();  // 連接到 MQTT broker
+  mqttClientHandler->loop();
+  delay(100);
 
   // Set trigger Timer
   setTimer();
